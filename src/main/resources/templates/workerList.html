@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>worker list</title>
+
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
+
+
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+
+</head>
+<body>
+	<div class="container">
+		<h1>Worker List</h1>
+
+		<table class="table table-bordered table-stripe" id="employee-table">
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Phone</td>
+					<td>Company</td>
+					<td>Country</td>
+					<td>City</td>
+					<td>Email</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="worker : ${wlist}">
+					<td th:text="${worker.workerName}"></td>
+					<td th:text="${worker.workerPhone}"></td>
+					<td th:text="${worker.company}"></td>
+					<td th:text="${worker.workerAddress.country}">Country</td>
+					<td th:text="${worker.workerAddress.city}">City</td>
+					<td th:text="${worker.workerEmail}">Post</td>
+					<td><a th:href="@{'/edit/'+${worker.workerId} }" class="btn btn-info">Edit</a><a
+						th:href="@{'/delete/'+${worker.workerId} }" class="btn btn-danger">Delete</a></td>
+
+				</tr>
+
+			</tbody>
+
+		</table>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#employee-table").DataTable({
+				'aoColumnDefs' : [ {
+					'bSortable' : false,
+					'aTargets' : [ -1 ]
+				} ]
+			});
+
+		})
+	</script>
+
+</body>
+</html>

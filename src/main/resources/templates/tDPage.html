@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Time & Date</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+
+
+
+</head>
+<body>
+	<form action="/tdpage" method="post" th:object="${tdObject}">
+
+		<div class="form-group">
+			<div class="col-md-4">
+				<label> Date: </label>
+				<div class="field-wrapper">
+					<input type="date" class="todayDate" name="birthdate"
+						th:field="*{birthdate}">
+				</div>
+			</div>
+			<input type="submit">
+		</div>
+	</form>
+</body>
+</html>
